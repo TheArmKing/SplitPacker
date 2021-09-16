@@ -10,10 +10,12 @@ Bash script to combine split APKs (android app bundles) into a single APK on mac
 - Lastly, the decompiled base APK directory is then moved to where you call this script from.
 
 # Info
-- Handles `resources`, `assets` and `lib-config` split APKs
-- `apktool` is needed, `aapt` is optional. If you use `SplitPacker_AAPT`, then you must have a working aapt executable in the script's directory. It is much faster (around 3x) than the normal script when handling asset-only split APKs
+- Handles `resources`, `assets` and `lib-config` split APKs.
+- `apktool` is needed to decompile the base APK and resource-only split APKs as well as asset-based split APKs. 
+- If you use `SplitPacker_AAPT`, then you must have a working aapt executable in the script's directory. It is much faster (around 3x) than the normal script when handling asset-only split APKs. (resources are not decompiled and `aapt` is used instead to get the asset's name)
+- `lib-config` split APKs are handled using `unzip`, no other adjustments have to be made for those.
 - The script is customized to my needs, which is combining the split APKs into a single decompiled folder, so I can mod the application and recompile it later.
-- You can edit the script at the end and add an automatic call to `apktool b` and `apksigner` if you wish to do so
+- You can edit the script at the end and add an automatic call to `apktool b` and `apksigner` if you wish to do so.
 
 # Working Video
 Normal Script:
