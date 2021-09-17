@@ -1,5 +1,5 @@
 # SplitPacker
-Bash script to combine split APKs (android app bundles) into a single APK on mac.
+Bash script to combine split APKs (android app bundles) into a single decompiled APK on mac.
 
 # Usage
 `path/to/SplitPacker.sh <dir>`
