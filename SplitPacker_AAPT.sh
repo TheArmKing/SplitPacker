@@ -1,6 +1,7 @@
 #!/bin/bash
 print_error(){
     echo -en "\x1B[0;49;91m==>\x1B[0m \x1B[1m${1}…\x1B[0m\n"
+    exit
 }
 apktool_custom() {
     echo -en "\x1B[0;49;34m==>\x1B[0m \x1B[1mDecompiling $(basename "$1")…\x1B[0m\n"
@@ -30,9 +31,9 @@ edit_manifest() {
 sourceDir="$(dirname "$0")"
 start="$(date +%s%N)"
 if ! type "apktool" > /dev/null 2>&1; then print_error "apktool is not installed"; fi
-if [ ! -d "$1" ]; then print_error "Invalid directory" && exit; fi
-if [ ! -f "${1}/base.apk" ]; then print_error "base.apk is missing" && exit; fi
-if [ ! -f "${sourceDir}/aapt" ]; then print_error "aapt not found in ${sourceDir}" && exit; fi
+if [ ! -d "$1" ]; then print_error "Invalid directory"; fi
+if [ ! -f "${1}/base.apk" ]; then print_error "base.apk is missing"; fi
+if [ ! -f "${sourceDir}/aapt" ]; then print_error "aapt not found in ${sourceDir}"; fi
 curDir="${PWD}"
 cd /tmp
 dirName="splitpacker_$(xxd -l2 -ps /dev/urandom)"
